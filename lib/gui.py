@@ -90,16 +90,17 @@ class MyFrame(wx.Frame):
         menuBar.Append(self.menu1, "&File")
         menuBar.Append(menu2, "&Options")
         self.SetMenuBar(menuBar)
+
         # events for menu items
-        # wx.EVT_MENU(self, ID_ABOUT, self.OnAbout)
-        # wx.EVT_MENU(self, ID_EXIT, self.TimeToQuit)
-        # wx.EVT_MENU(self, ID_LOG, self.OnToggleRedirect)
-        # wx.EVT_MENU(self, ID_QMDEXTENSIONS, self.OnQMDExtensions)
-        # wx.EVT_MENU(self, ID_UCVARS, self.OnUCVars)
-        # wx.EVT_MENU(self, ID_FORCEFIBFLOAT, self.OnForceFIBFloat)
-        # wx.EVT_MENU(self, ID_FORCEDTD, self.OnForceDTD)
-        # wx.EVT_MENU(self, ID_FORCELANG, self.OnForceLANG)
-        # wx.EVT_MENU(self, ID_NOCOMMENT, self.OnSuppressComments)
+        self.Bind(wx.EVT_MENU, self.OnAbout, id=ID_ABOUT)
+        self.Bind(wx.EVT_MENU, self.TimeToQuit, id=ID_EXIT)
+        self.Bind(wx.EVT_MENU, self.OnToggleRedirect, id=ID_LOG)
+        self.Bind(wx.EVT_MENU, self.OnQMDExtensions, id=ID_QMDEXTENSIONS)
+        self.Bind(wx.EVT_MENU, self.OnUCVars, id=ID_UCVARS)
+        self.Bind(wx.EVT_MENU, self.OnForceFIBFloat, id=ID_FORCEFIBFLOAT)
+        self.Bind(wx.EVT_MENU, self.OnForceDTD, id=ID_FORCEDTD)
+        self.Bind(wx.EVT_MENU, self.OnForceLANG, id=ID_FORCELANG)
+        self.Bind(wx.EVT_MENU, self.OnSuppressComments, id=ID_NOCOMMENT)
 
         # close event for main window
         self.Bind(wx.EVT_CLOSE, self.TimeToQuit)
