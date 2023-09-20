@@ -29,22 +29,24 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."""
 
-import os, sys, string
+import sys
+
 
 def CheckFile(fname):
-	f=file(fname,"rb")
-	data=f.read()
-	f.close()
-	pos=0
-	for c in data:
-		if ord(c)>=0x7F or (ord(c)<=0x1F and c not in "\r\n\t"):
-			print('Found chr(0x%2X) at after:\n%s'%(ord(c),data[pos-80:pos]))
-		pos+=1
+    f = file(fname, "rb")
+    data = f.read()
+    f.close()
+    pos = 0
+    for c in data:
+        if ord(c) >= 0x7F or (ord(c) <= 0x1F and c not in "\r\n\t"):
+            print('Found chr(0x%2X) at after:\n%s' % (ord(c), data[pos - 80:pos]))
+        pos += 1
+
 
 if __name__ == '__main__':
-	fileNames=[]
-	for x in sys.argv[1:]:
-		fileNames.append(x)
-	for f in fileNames:
-		print("Checking file: %s"%f)
-		CheckFile(f)
+    fileNames = []
+    for x in sys.argv[1:]:
+        fileNames.append(x)
+    for f in fileNames:
+        print("Checking file: %s" % f)
+        CheckFile(f)
